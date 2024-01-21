@@ -1,0 +1,31 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} Login sahifasi {% endblock title %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Login</h2>
+            <p class="card-text">Saytga kirish uchun formani to'ldiring</p>
+            
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary mt-3">Login</button>
+            </form>
+            
+            <h5 class="mt-3"> Agar parolingizni unutgan bolsangiz uni
+                <a href="{% url 'password_reset' %}" class="text-danger">tiklang</a>
+            </h5>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <h4> Agar foydalanuvchi profiligiz mavjud bo'lmasa profil ochishingiz mumkin
+            <a href="{% url 'user_register' %}" style="color: deepskyblue"> Ro'yxatdan o'tishingiz</a> mumkin
+        </h4>
+    </div>
+</div>
+
+{% endblock content %}

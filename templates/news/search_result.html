@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+
+{% block title %} Qidiruv natijalari {% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Qidiruv natijalari</h2>
+
+    {% for yangilik in barcha_yangiliklar  %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3>
+                    <a href="{% url 'news_detail_page' yangilik.slug %}" class="text-danger">{{ yangilik.title }}</a>
+                </h3>
+                <img src="{{ yangilik.image.url }}" class="img-fluid" alt="{{ yangilik.title }}">
+                <p>{{ yangilik.body | truncatewords:30 }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

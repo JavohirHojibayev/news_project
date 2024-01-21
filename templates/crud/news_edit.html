@@ -1,0 +1,38 @@
+{% extends 'news/base.html' %}
+
+{% load static %}
+
+{% block title %} {{ news.title }} {% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>Joriy yangilikni tahrirlash</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.media }}
+                            <div class="form-group">
+                                {{ form.title.label_tag }}
+                                {{ form.title }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.content.label_tag }}
+                                {{ form.content }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.image.label_tag }}
+                                {{ form.image }}
+                            </div>
+                            <button type="submit" class="btn btn-info ml-2">Tahrirlash</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
