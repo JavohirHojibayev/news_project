@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django-hitcount = "*"
+django-modeltranslation = "*"
 
 [dev-packages]
 

@@ -1,24 +1,21 @@
 {% extends 'news/base.html' %}
 {% load static %}
 
-{% block title %}Sport xabarlar{% endblock title %}
+{% block title %} Sport xabarlari {% endblock title %}
 
 {% block content %}
-    <div class="container mt-4">
-        <div class="row">
-            {% for news in sport_yangiliklar %}
-                <div class="col-sm-6 mb-4">
-                    <div class="card">
-                        <a href="{{ news.get_absolute_url }}" class="text-decoration-none">
-                            <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }}" style="width: 100%;">
-                            <div class="card-body">
-                                <h3 class="card-title font-weight-bold">{{ news.title }}</h3>
-                                <p class="card-text">{{ news.description }}</p>
-                            </div>
-                        </a>
-                    </div>
+
+    {% for news in sport_yangiliklari %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <a href="{{ news.get_absolute_url }}">
+                    <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:50%">
+                    <h2>{{ news.title }}</h2>
+                    </a>
                 </div>
-            {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endfor %}
+
 {% endblock content %}

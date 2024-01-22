@@ -111,7 +111,6 @@ class ContactPageView(TemplateView):
         if request.method == "POST" and form.is_valid():
             form.save()
             return HttpResponse("<h2> Biz bilan boglanganingiz uchun tashakkur </h2>")
-
         context = {
             'form': form
         }
@@ -168,10 +167,15 @@ class NewsDeleteView(OnlyLoggedSuperUser, DeleteView):
     template_name = 'crud/news_delete.html'
     success_url = reverse_lazy('home_page')
 
-class NewsCreateView( LoginRequiredMixin, CreateView):
+
+
+
+class NewsCreateView(OnlyLoggedSuperUser, CreateView):
     model = News
     template_name = 'crud/news_create.html'
-    fields = ('title', 'slug', 'image', 'category', 'status')
+    fields = ('title', 'title_uz', 'title_en', 'title_ru',
+              'body_uz', 'body_ru', 'body_en',
+              'slug', 'image', 'category', 'status')
 
 
 @login_required
